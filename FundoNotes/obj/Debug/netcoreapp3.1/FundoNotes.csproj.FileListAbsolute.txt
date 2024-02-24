@@ -49,3 +49,9 @@ C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcorea
 C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\ManagerLayer.dll
 C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\ManagerLayer.pdb
 C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\CommonLayer.pdb
+C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\obj\Debug\netcoreapp3.1\FundoNotes.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\obj\Debug\netcoreapp3.1\FundoNotes.sourcelink.json

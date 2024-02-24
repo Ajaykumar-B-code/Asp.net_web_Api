@@ -46,15 +46,22 @@ namespace FundoNotes.Controllers
         [HttpPost]
         [Route("login")]
         public ActionResult login(login model)
-        { 
-            var response = userManager.Userlogin(model);
-            if(response != null)
+        {
+            try
             {
-                return Ok(new ResModel<user> { Success = true, Message="login sucessfull", Data = response });
+                var response = userManager.Userlogin(model);
+                if (response != null)
+                {
+                    return Ok(new ResModel<user> { Success = true, Message = "login sucessfull", Data = response });
+                }
+                else
+                {
+                    return BadRequest(new ResModel<user> { Success = false, Message = "Login failed", Data = response });
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest(new ResModel<user> { Success = false, Message = "Login failed",Data = response });
+                return BadRequest(new ResModel<user> { Success=false, Message = ex.Message, Data = null});
             }
         }
     }

@@ -40,8 +40,7 @@ namespace RepositoryLayer.Services
 
         public user Userlogin(login model)
         {
-            try
-            {
+            
                 user user = context.UserTable.FirstOrDefault(x => x.Email == model.Email);
 
                 if (user != null)
@@ -59,12 +58,8 @@ namespace RepositoryLayer.Services
                 {
                     throw new Exception("Incorrect email");
                 }
-            }
-            catch (Exception ex)
-            {
-               
-                return null;
-            }
+            
+          
         }
             
     }

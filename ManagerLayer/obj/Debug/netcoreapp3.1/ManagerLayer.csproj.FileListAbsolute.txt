@@ -13,3 +13,4 @@ C:\Users\91767\Desktop\workspace\webApi\FundoNotes\ManagerLayer\bin\Debug\netcor
 C:\Users\91767\Desktop\workspace\webApi\FundoNotes\ManagerLayer\bin\Debug\netcoreapp3.1\CommonLayer.pdb
 C:\Users\91767\Desktop\workspace\webApi\FundoNotes\ManagerLayer\obj\Debug\netcoreapp3.1\ManagerLayer.csproj.AssemblyReference.cache
 C:\Users\91767\Desktop\workspace\webApi\FundoNotes\ManagerLayer\obj\Debug\netcoreapp3.1\ManagerLayer.csproj.CopyComplete
+C:\Users\91767\Desktop\workspace\webApi\FundoNotes\ManagerLayer\obj\Debug\netcoreapp3.1\ManagerLayer.sourcelink.json
