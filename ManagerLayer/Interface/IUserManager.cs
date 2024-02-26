@@ -11,7 +11,9 @@ namespace ManagerLayer.Interface
         public user UserRegistration(RegisterModel model);
         public string Userlogin(login model);
 
-       
+        public string ForgetPassword(string email);
+
+
       //  public user UserResetPassword(string email, ResetPasswordModel model);
     }
 }
