@@ -49,14 +49,14 @@ namespace FundoNotes.Controllers
         {
             try
             {
-                var response = userManager.Userlogin(model);
+                string response = userManager.Userlogin(model);
                 if (response != null)
                 {
-                    return Ok(new ResModel<user> { Success = true, Message = "login sucessfull", Data = response });
+                    return Ok(new ResModel<String> { Success = true, Message = "login sucessfull", Data = response });
                 }
                 else
                 {
-                    return BadRequest(new ResModel<user> { Success = false, Message = "Login failed", Data = response });
+                    return BadRequest(new ResModel<String> { Success = false, Message = "Login failed", Data = response });
                 }
             }
             catch (Exception ex)
@@ -85,5 +85,7 @@ namespace FundoNotes.Controllers
         //        return BadRequest(new ResModel<user> { Success = false, Message = ex.Message, Data = null });
         //    }
         //}
+
+
     }
 }

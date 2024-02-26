@@ -9,8 +9,9 @@ namespace ManagerLayer.Interface
     public interface IUserManager
     {
         public user UserRegistration(RegisterModel model);
-        public user Userlogin(login model);
+        public string Userlogin(login model);
 
+       
       //  public user UserResetPassword(string email, ResetPasswordModel model);
     }
 }
