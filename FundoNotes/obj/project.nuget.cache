@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "QqRFMpO2sZwKK/80j3PTLmg+SvcLFvMgtjMKC0L4CmdeuRdsrc3JJmtv4VPikKAVs9DxVFwJBnsTXxt0Y3mgvQ==",
+  "dgSpecHash": "S2PiIRyCmS+p3meKDB+ViEjay+TdnM42BAbyCf609zgGG+I0uiLaHOSLN4UipuVi5hRviJQvpiQL9a0WL+gQZg==",
   "success": true,
   "projectFilePath": "C:\\Users\\91767\\Desktop\\workspace\\webApi\\FundoNotes\\FundoNotes\\FundoNotes.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\91767\\.nuget\\packages\\microsoft.aspnetcore.dataprotection.abstractions\\3.1.0\\microsoft.aspnetcore.dataprotection.abstractions.3.1.0.nupkg.sha512",
     "C:\\Users\\91767\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\91767\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\91767\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

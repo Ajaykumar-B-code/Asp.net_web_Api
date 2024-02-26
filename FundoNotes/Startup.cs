@@ -38,6 +38,7 @@ namespace FundoNotes
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserManager, UserManager>();
 
+            services.AddDataProtection();   
             services.AddSwaggerGen();
         }
 
