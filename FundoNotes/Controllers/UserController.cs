@@ -64,26 +64,26 @@ namespace FundoNotes.Controllers
                 return BadRequest(new ResModel<user> { Success=false, Message = ex.Message, Data = null});
             }
         }
-        [HttpPut]
-        [Route("{Email}")]
-        public ActionResult UserResetPassword(string Email, ResetPasswordModel model)
-        {
-            try
-            {
-                var response = userManager.UserResetPassword(Email,model);
-                if (response != null)
-                {
-                    return Ok(new ResModel<user> { Success = true, Message = "changed sucessfull", Data = response });
-                }
-                else
-                {
-                    return BadRequest(new ResModel<user> { Success = false, Message = "changed failed", Data = response });
-                }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new ResModel<user> { Success = false, Message = ex.Message, Data = null });
-            }
-        }
+        //[HttpPut]
+        //[Route("{Email}")]
+        //public ActionResult UserResetPassword(string Email, ResetPasswordModel model)
+        //{
+        //    try
+        //    {
+        //        var response = userManager.UserResetPassword(Email,model);
+        //        if (response != null)
+        //        {
+        //            return Ok(new ResModel<user> { Success = true, Message = "changed sucessfull", Data = response });
+        //        }
+        //        else
+        //        {
+        //            return BadRequest(new ResModel<user> { Success = false, Message = "changed failed", Data = response });
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(new ResModel<user> { Success = false, Message = ex.Message, Data = null });
+        //    }
+        //}
     }
 }

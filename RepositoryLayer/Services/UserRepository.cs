@@ -13,11 +13,12 @@ namespace RepositoryLayer.Services
     public class UserRepository : IUserRepository
     {
         private readonly demoContext context;
-        private readonly IDataProtector _dataProtector;
+       // private readonly IDataProtector _dataProtector;
+       Encryption bcrypt= new Encryption();
         public UserRepository(demoContext context, IDataProtectionProvider dataProvider)
         {
             this.context= context;
-            this._dataProtector = dataProvider.CreateProtector("Encriptionkey");
+            //this._dataProtector = dataProvider.CreateProtector("Encriptionkey");
         }
 
   
@@ -31,7 +32,7 @@ namespace RepositoryLayer.Services
                     entity.Fname = model.Fname;
                     entity.Lname = model.Lname;
                     entity.Email = model.Email;
-                    string encryptedPassword = this._dataProtector.Protect(model.Password);
+                    string encryptedPassword = bcrypt.HashGenerator(model.Password);
                     entity.Password = encryptedPassword;
                     context.UserTable.Add(entity);
                     context.SaveChanges();
@@ -48,8 +49,8 @@ namespace RepositoryLayer.Services
 
                 if (user != null)
                 {
-                string decryptedPassword = this._dataProtector.Unprotect(user.Password);
-                    if (decryptedPassword== model.Password)
+             //   string decryptedPassword = this._dataProtector.Unprotect(user.Password);
+                    if (bcrypt.MatchPass(model.Password,user.Password))
                     {
                         return user;
                     }
@@ -60,23 +61,23 @@ namespace RepositoryLayer.Services
                 
         }
         
-        public user UserResetPassword(string email,ResetPasswordModel model)
-        {
-              user user = context.UserTable.FirstOrDefault(x =>x.Email == email);
-            if (user != null)
-            {
-                string decryptoldPassword = this._dataProtector.Unprotect(user.Password);
-                if (decryptoldPassword== model.oldPassword)
-                {
-                    string encryptedPassword = this._dataProtector.Protect(model.newPassword);
-                    user.Password = encryptedPassword;
-                    context.SaveChanges();
-                    return user;
-                }
-                throw new Exception("old password did not match");
-            }
-           throw new Exception("user not found!");
-        }
+        //public user UserResetPassword(string email,ResetPasswordModel model)
+        //{
+        //      user user = context.UserTable.FirstOrDefault(x =>x.Email == email);
+        //    if (user != null)
+        //    {
+        //        string decryptoldPassword = this._dataProtector.Unprotect(user.Password);
+        //        if (decryptoldPassword== model.oldPassword)
+        //        {
+        //            string encryptedPassword = this._dataProtector.Protect(model.newPassword);
+        //            user.Password = encryptedPassword;
+        //            context.SaveChanges();
+        //            return user;
+        //        }
+        //        throw new Exception("old password did not match");
+        //    }
+        //   throw new Exception("user not found!");
+        //}
        
     }
 }

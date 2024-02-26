@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "RepositoryLayer/1.0.0": {
         "dependencies": {
+          "BCrypt.Net-Next": "3.1.0",
           "CommonLayer": "1.0.0",
           "Microsoft.AspNetCore.DataProtection.Abstractions": "3.1.0",
           "Microsoft.EntityFrameworkCore": "3.1.0",
@@ -18,6 +19,14 @@
         },
         "runtime": {
           "RepositoryLayer.dll": {}
+        }
+      },
+      "BCrypt.Net-Next/3.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/BCrypt.Net-Next.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
+          }
         }
       },
       "Microsoft.AspNetCore.DataProtection.Abstractions/3.1.0": {
@@ -877,6 +886,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "BCrypt.Net-Next/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zpAiSXd1mvPh/+cG0ItL8bD9dkPZ92D/QmgL4OlikxBBHeb4Vm39eSwk2igAdbXFp7Vx9DnRxf4PjB+5+8V4cA==",
+      "path": "bcrypt.net-next/3.1.0",
+      "hashPath": "bcrypt.net-next.3.1.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.DataProtection.Abstractions/3.1.0": {
       "type": "package",

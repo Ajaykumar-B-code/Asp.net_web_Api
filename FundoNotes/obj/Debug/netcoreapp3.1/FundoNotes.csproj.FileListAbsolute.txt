@@ -55,3 +55,4 @@ C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcorea
 C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\obj\Debug\netcoreapp3.1\FundoNotes.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\obj\Debug\netcoreapp3.1\FundoNotes.sourcelink.json
+C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\BCrypt.Net-Next.dll
