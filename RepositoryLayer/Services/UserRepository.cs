@@ -86,7 +86,7 @@ namespace RepositoryLayer.Services
         //   throw new Exception("user not found!");
         //}
        
-        private string GenerateToken(string email, int id)
+        public string GenerateToken(string email, int id)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);

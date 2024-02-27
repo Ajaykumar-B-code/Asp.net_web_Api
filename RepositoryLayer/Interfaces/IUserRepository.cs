@@ -13,6 +13,7 @@ namespace RepositoryLayer.Interfaces
 
         public string ForgetPassword(string email);
 
+        public string GenerateToken(string email, int id);
        // public user UserResetPassword(string email, ResetPasswordModel model);
     }
 }
