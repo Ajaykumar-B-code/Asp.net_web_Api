@@ -14,6 +14,8 @@ namespace ManagerLayer.Interface
         public string ForgetPassword(string email);
 
         public string GenerateToken(string email, int id);
+
+        public bool UserResetPassword(string email, ResetPasswordModel model);
       //  public user UserResetPassword(string email, ResetPasswordModel model);
     }
 }

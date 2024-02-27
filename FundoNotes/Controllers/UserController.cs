@@ -3,6 +3,7 @@ using CommonLayer.RequestModels;
 using CommonLayer.ResponseModel;
 using ManagerLayer.Interface;
 using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RepositoryLayer.Context;
 using RepositoryLayer.Entity;
@@ -116,6 +117,29 @@ namespace FundoNotes.Controllers
         //    }
         //}
 
+        [Authorize]
+        [HttpPost]
+        [Route("ResetPassword")]
+
+        public ActionResult ResetPassword(ResetPasswordModel model)
+        {
+            try
+            {
+                string Email = User.FindFirst("Email").Value;
+                if (userManager.UserResetPassword(Email, model))
+                {
+                    return Ok(new ResModel<bool> { Success = true, Message = "Password Changed", Data = true });
+                }
+                else
+                {
+                    return BadRequest(new ResModel<bool> { Success = false, Message = "Password not changed", Data = false });
+                }
+            }
+            catch (Exception exe)
+            {
+                return BadRequest(new ResModel<bool> { Success = false, Message = exe.Message, Data = false });
+            }
+        }
 
     }
 }

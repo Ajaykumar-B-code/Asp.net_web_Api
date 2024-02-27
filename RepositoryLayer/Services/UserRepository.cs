@@ -68,32 +68,27 @@ namespace RepositoryLayer.Services
 
         }
 
-        //public user UserResetPassword(string email,ResetPasswordModel model)
-        //{
-        //      user user = context.UserTable.FirstOrDefault(x =>x.Email == email);
-        //    if (user != null)
-        //    {
-        //        string decryptoldPassword = this._dataProtector.Unprotect(user.Password);
-        //        if (decryptoldPassword== model.oldPassword)
-        //        {
-        //            string encryptedPassword = this._dataProtector.Protect(model.newPassword);
-        //            user.Password = encryptedPassword;
-        //            context.SaveChanges();
-        //            return user;
-        //        }
-        //        throw new Exception("old password did not match");
-        //    }
-        //   throw new Exception("user not found!");
-        //}
-       
-        public string GenerateToken(string email, int id)
+        public bool UserResetPassword(string Email, ResetPasswordModel model)
+        {
+            user user = context.UserTable.ToList().Find(x=>x.Email==Email);
+            if (user != null)
+            {
+                user.Password = bcrypt.HashGenerator(model.ConfirmPassword);
+                context.SaveChanges();  
+                return true;
+            }
+            return false;
+            
+        }
+
+        public string GenerateToken(string Email, int Id)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var claims = new[]
             {
-                new Claim("email",email),
-                new Claim("UserId",id.ToString())
+                new Claim("Email",Email),
+                new Claim("UserId",Id.ToString())
         };
             var token = new JwtSecurityToken(config["Jwt:Issuer"],
                 config["Jwt:Audience"],
@@ -118,6 +113,8 @@ namespace RepositoryLayer.Services
                 return null;
             }
         }
+
+        
     }
 
 }
