@@ -36,6 +36,9 @@ namespace RepositoryLayer.Services
             context.SaveChanges();
             return notesEntity;
         }
-       
+        public List<NotesEntity> GetNotes(int id)
+        {
+            return context.NotesTable.Where(x => x.Id == id).ToList();
+        }
     }
 }
