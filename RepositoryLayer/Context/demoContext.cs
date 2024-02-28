@@ -12,6 +12,7 @@ namespace RepositoryLayer.Context
         public demoContext(DbContextOptions options) : base(options) { }
         public DbSet<DemoEntity> DemoTable { get; set; }
         public DbSet<user> UserTable { get; set; }
+        public DbSet<NotesEntity> NotesTable { get; set; }
     }
 }
  

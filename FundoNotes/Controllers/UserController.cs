@@ -84,7 +84,7 @@ namespace FundoNotes.Controllers
             var check = userManager.ForgetPassword(Email);
             var checkmail = context.UserTable.FirstOrDefault(x => x.Email == Email);
             var token = userManager.GenerateToken(checkmail.Email, checkmail.Id);
-            mail.SendMail(Email, token);
+            mail.SendMail(Email, check);
             Uri uri = new Uri("rabbitmq://localhost/ticketQueue");
             var endPoint = await _bus.GetSendEndpoint(uri);
             await endPoint.Send(check);
