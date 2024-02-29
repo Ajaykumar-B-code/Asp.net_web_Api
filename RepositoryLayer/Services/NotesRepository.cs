@@ -101,6 +101,20 @@ namespace RepositoryLayer.Services
             throw new Exception("notes did not found");
         }
 
+        public NotesEntity Addcolor(string colour, int NotesId)
+        {
+            var notesEntity = context.NotesTable.FirstOrDefault(x => x.NotesId == NotesId);
+            if (notesEntity != null)
+            {
+                notesEntity.Colour = colour;
+                context.NotesTable.Update(notesEntity);
+                context.SaveChanges();
+            }
+            return notesEntity;
+
+        }
+
+
 
 
 
