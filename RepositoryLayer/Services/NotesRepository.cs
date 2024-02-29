@@ -41,5 +41,45 @@ namespace RepositoryLayer.Services
         {
             return context.NotesTable.Where(x => x.Id == id).ToList();
         }
+
+       
+        public NotesEntity UpdateNotes(int userId, NotesCreatioinModel model, int NotesId)
+        {
+
+            var notesEntity = context.NotesTable.FirstOrDefault(x => ((x.Id == userId) && (x.NotesId == NotesId)));
+
+            if (notesEntity == null)
+            {
+                throw new Exception("Notes did not found");
+            }
+            if (!string.IsNullOrEmpty(model.Title))
+            {
+                notesEntity.Title = model.Title;
+            }
+            if (!string.IsNullOrEmpty(model.Description))
+            {
+                notesEntity.Description = model.Description;
+            }
+            //  context.NotesTable.Update(notesEntity);
+            context.SaveChanges();
+            return notesEntity;
+        }
+
+        //public NotesEntity UpdateNotes(NotesCreatioinModel model, int NotesId)
+        //{
+        //    var notesEntity = context.NotesTable.FirstOrDefault(x => x.NotesId == NotesId);
+        //    if (notesEntity == null)
+        //    {
+        //        throw new Exception("Notes did not found");
+        //    }
+        //    notesEntity.Title = (!string.IsNullOrEmpty(model.Title)) ? model.Title : notesEntity.Title;
+        //    notesEntity.Description=(!string.IsNullOrEmpty(model.Description)) ? model.Description : notesEntity.Description;
+        //    context.SaveChanges();
+        //    return notesEntity;
+        //}
+
+
+
+
     }
 }
