@@ -51,5 +51,151 @@ namespace FundoNotes.Controllers
             return BadRequest(new ResModel<List<NotesEntity>> { Success = false, Message = "Notes displayed failed", Data = response });
         }
 
+        [Authorize]
+        [HttpPut]
+        [Route("update")]
+        public ActionResult update(NotesCreatioinModel model,int notesId)
+        {
+            try
+            {
+                int id = Convert.ToInt32(User.FindFirst("UserId").Value);
+                var response = manager.UpdateNotes(id,model, notesId);
+                if (response != null)
+                {
+                    return Ok(new ResModel<NotesEntity> { Success = true, Message = "Data updated Successfully", Data = response });
+                }
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = "Data updation failed", Data = response });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResModel<NotesEntity> { Success=false,Message = ex.Message,Data=null});
+            }
+        }
+
+        [Authorize]
+        [HttpPut]
+        [Route("Trash")]
+        public ActionResult isTrash(int notesId)
+        {
+            try
+            {
+                int id = Convert.ToInt32(User.FindFirst("UserId").Value);
+                var response = manager.Istrash(id, notesId);
+                if(response != null)
+                {
+                    return Ok(new ResModel<NotesEntity> { Success = true, Message = "added to Trash", Data = response });
+                }
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = "failed to add in trash", Data = response });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest( new ResModel<NotesEntity> { Success = false, Message = ex.Message, Data = null});
+            }
+        }
+
+        [Authorize]
+        [HttpDelete]
+        [Route("Delete")]
+        public ActionResult Delete(int notesId)
+        {
+            try
+            {
+                int id = Convert.ToInt32(User.FindFirst("UserId").Value);
+                var response = manager.Delete(id, notesId);
+                if (response != null)
+                {
+                    return Ok(new ResModel<NotesEntity> { Success = true, Message = "deleted successfullt", Data = response });
+                }
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = "failed to delete", Data = response });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = ex.Message, Data = null });
+            }
+        }
+
+        [Authorize]
+        [HttpPut]
+        [Route("addcolor")]
+        public ActionResult AddColor(string colour,int notesId)
+        {
+            try
+            {
+                var response = manager.Addcolor(colour, notesId);
+                if (response != null)
+                {
+                    return Ok(new ResModel<NotesEntity> { Success = true, Message = "colour added successfully", Data = response });
+                }
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = "adding of colour failed", Data = response });
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = ex.Message,Data = null});
+            }
+        }
+
+        [Authorize]
+        [HttpPut]
+        [Route("archieve")]
+        public ActionResult isArchieve(int notesId)
+        {
+            try
+            {
+                int userId = Convert.ToInt32(User.FindFirst("UserId").Value);
+                var response = manager.isArchieve(userId, notesId);
+                if (response != null)
+                {
+                    return Ok(new ResModel<NotesEntity> { Success = true, Message = "notes Archieve successfully", Data = response });
+                }
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = "notes Archieve failed", Data = response });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = ex.Message, Data = null });
+            }
+        }
+
+        [Authorize]
+        [HttpPut]
+        [Route("pin")]
+        public ActionResult isPin(int notesId)
+        {
+            try
+            {
+                int userId = Convert.ToInt32(User.FindFirst("UserId").Value);
+                var response = manager.isPin(userId, notesId);
+                if (response != null)
+                {
+                    return Ok(new ResModel<NotesEntity> { Success = true, Message = "notes Pinned", Data = response });
+                }
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = "notes did not Pinned", Data = response });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = ex.Message, Data = null });
+            }
+        }
+
+        [Authorize]
+        [HttpPut]
+        [Route("AddRemainder")]
+        public ActionResult AddRemainder(int notesId,DateTime time)
+        {
+            try
+            {
+                int userId = Convert.ToInt32(User.FindFirst("UserId").Value);
+                var response = manager.AddRemander(notesId, time);
+                if (response != null)
+                {
+                    return Ok(new ResModel<NotesEntity> { Success = true, Message = "Remainder Added", Data = response });
+                }
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = "Remainder cannot be Added", Data = response });
+            }
+            catch(Exception ex)
+            {
+                return BadRequest( new ResModel<NotesEntity> { Success= false, Message = ex.Message,Data = null});
+            }
+        }
+
     }
 }

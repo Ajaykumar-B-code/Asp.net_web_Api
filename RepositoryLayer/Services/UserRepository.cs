@@ -71,6 +71,7 @@ namespace RepositoryLayer.Services
         public bool UserResetPassword(string Email, ResetPasswordModel model)
         {
             user user = context.UserTable.ToList().Find(x=>x.Email==Email);
+          
             if (user != null)
             {
                 user.Password = bcrypt.HashGenerator(model.ConfirmPassword);

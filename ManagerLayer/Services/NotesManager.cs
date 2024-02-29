@@ -25,5 +25,38 @@ namespace ManagerLayer.Services
         {
             return repository.GetNotes(id);
         }
+
+        public NotesEntity UpdateNotes(int userId, NotesCreatioinModel model, int NotesId)
+        {
+            return repository.UpdateNotes(userId,model, NotesId);
+        }
+
+        public NotesEntity Istrash(int userId, int notesId)
+        {
+            return repository.Istrash(userId,notesId);
+        }
+        public NotesEntity Delete(int userId, int NotesId)
+        {
+            return repository.Delete(userId,NotesId);
+        }
+
+        public NotesEntity Addcolor(string colour, int NotesId)
+        {
+            return repository.Addcolor(colour,NotesId);
+        }
+        public NotesEntity isArchieve(int userId, int notesId)
+        {
+            return repository.isArchieve(userId, notesId);
+        }
+
+        public NotesEntity isPin(int userId, int notesId)
+        {
+            return repository.isPin(userId, notesId);
+        }
+        public NotesEntity AddRemander(int notesId, DateTime dateTime)
+        {
+            return repository.AddRemander(notesId, dateTime);
+        }
     }
+
 }

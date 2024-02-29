@@ -10,7 +10,7 @@ using System.Text;
 
 namespace RepositoryLayer.Services
 {
-    public class NotesRepository: INotesRepository
+    public class NotesRepository : INotesRepository
     {
         private readonly demoContext context;
 
@@ -19,7 +19,7 @@ namespace RepositoryLayer.Services
             this.context = context;
         }
 
-        public NotesEntity NotesCeation(NotesCreatioinModel model,int id)
+        public NotesEntity NotesCeation(NotesCreatioinModel model, int id)
         {
             NotesEntity notesEntity = new NotesEntity();
             notesEntity.Title = model.Title;
@@ -27,18 +27,15 @@ namespace RepositoryLayer.Services
             notesEntity.Colour = null;
             notesEntity.Image = null;
             notesEntity.Id = id;
+            notesEntity.Reminder = DateTime.Now;
             notesEntity.UpdatedAt = DateTime.Now;
             notesEntity.CreatedAt = DateTime.Now;
             notesEntity.IsArchive = false;
             notesEntity.isPin = false;
-            notesEntity.NotesUser = null;       
+            notesEntity.NotesUser = null;
             context.NotesTable.Add(notesEntity);
             context.SaveChanges();
             return notesEntity;
-        }
-        public List<NotesEntity> GetNotes(int id)
-        {
-            return context.NotesTable.Where(x => x.Id == id).ToList();
         }
     }
 }
