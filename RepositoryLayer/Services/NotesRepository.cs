@@ -78,6 +78,16 @@ namespace RepositoryLayer.Services
         //    return notesEntity;
         //}
 
+        public NotesEntity Istrash(int userId, int notesId)
+        {
+            var notesEntiy = context.NotesTable.FirstOrDefault(x => ((x.Id == userId) && (x.NotesId == notesId)));
+            if (notesEntiy != null)
+            {
+                notesEntiy.isTrash = true;
+                context.SaveChanges();
+            }
+            return notesEntiy;
+        }
 
 
 
