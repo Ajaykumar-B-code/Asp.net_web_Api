@@ -114,9 +114,58 @@ namespace RepositoryLayer.Services
 
         }
 
+        public NotesEntity isArchieve(int userId, int notesId)
+        {
+            var notesEntity = context.NotesTable.FirstOrDefault(x => x.NotesId == notesId);
+            if (notesEntity != null)
+            {
+                if (notesEntity.IsArchive)
+                {
+                    notesEntity.IsArchive = false;
+                }
+                else
+                {
+                    notesEntity.IsArchive = true;
+                }
+                context.SaveChanges();
+                return notesEntity;
+            }
+            throw new Exception("notes did not found");
+        }
 
+        public NotesEntity isPin(int userId, int notesId)
+        {
+            var notesEntity = context.NotesTable.FirstOrDefault(x => x.NotesId == notesId);
+            if (notesEntity != null)
+            {
+                if (notesEntity.isPin)
+                {
+                    notesEntity.isPin = false;
+                }
+                else
+                {
+                    notesEntity.isPin = true;
+                }
+                context.SaveChanges();
+                return notesEntity;
+            }
+            throw new Exception("notes did not found");
+        }
 
+        public NotesEntity AddRemander(int notesId, DateTime dateTime)
+        {
+            var notesEntity = context.NotesTable.FirstOrDefault(x => x.NotesId == notesId);
+            if (notesEntity != null)
+            {
+                notesEntity.Reminder = dateTime;
+                context.Update(notesEntity);
+                context.SaveChanges();
+                return notesEntity;
+            }
+            throw new Exception("notes did not found");
 
-
+        }
     }
+
+
 }
