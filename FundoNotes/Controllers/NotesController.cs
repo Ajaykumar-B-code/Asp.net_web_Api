@@ -196,6 +196,21 @@ namespace FundoNotes.Controllers
                 return BadRequest( new ResModel<NotesEntity> { Success= false, Message = ex.Message,Data = null});
             }
         }
-
+        [Authorize]
+        [HttpPut]
+        [Route("Addimage")]
+        public ActionResult Addimage(string fpath,int notesId)
+        {
+           
+                int userId = Convert.ToInt32(User.FindFirst("UserId").Value);
+                var response = manager.UploadImage(fpath, notesId, userId);
+                if (response != null)
+                {
+                    return Ok(new ResModel<string> { Success = true, Message = "Image uploaded", Data = response });
+                }
+                return BadRequest(new ResModel<string> { Success = false, Message = "Image uploding failed", Data = response });
+            
+           
+        }
     }
 }

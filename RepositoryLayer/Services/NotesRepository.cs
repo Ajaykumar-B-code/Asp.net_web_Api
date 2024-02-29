@@ -1,4 +1,6 @@
-﻿using CommonLayer.RequestModels;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using CommonLayer.RequestModels;
 using RepositoryLayer.Context;
 using RepositoryLayer.Entity;
 using RepositoryLayer.Interfaces;
@@ -163,7 +165,41 @@ namespace RepositoryLayer.Services
                 return notesEntity;
             }
             throw new Exception("notes did not found");
+        }
 
+        public string UploadImage(string fpath,int notesId,int userId)
+        {
+            try
+            {
+                var notesEntityUserId = context.NotesTable.Where(x => x.Id==userId);
+                if(notesEntityUserId != null)
+                {
+                    var notesEntityNoteId = notesEntityUserId.FirstOrDefault(x => x.NotesId == notesId);
+                    if( notesEntityNoteId != null )
+                    {
+                        Account account = new Account("dnlfv7gzf", "228877752218316", "hZjydsNRUYKXUBFxGQ6l9wDW-Gw");
+                        Cloudinary cloudinary = new Cloudinary(account);
+                        ImageUploadParams uploadParams = new ImageUploadParams()
+                        {
+                            File = new FileDescription(fpath),
+                            PublicId = notesEntityNoteId.Title
+                        };
+
+                        ImageUploadResult uploadResult = cloudinary.Upload(uploadParams);
+
+                        notesEntityNoteId.UpdatedAt = DateTime.Now;
+                        notesEntityNoteId.Image = uploadResult.Url.ToString();
+                        context.SaveChanges();
+                        return "Image uploaded Successfully";
+                    }
+                    return null;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 

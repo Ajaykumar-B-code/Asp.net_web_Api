@@ -20,5 +20,6 @@ namespace ManagerLayer.Interface
         public NotesEntity isArchieve(int userId, int notesId);
         public NotesEntity isPin(int userId, int notesId);
         public NotesEntity AddRemander(int notesId, DateTime dateTime);
+        public string UploadImage(string fpath, int notesId, int userId);
     }
 }

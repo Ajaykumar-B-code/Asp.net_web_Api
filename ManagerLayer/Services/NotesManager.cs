@@ -57,6 +57,10 @@ namespace ManagerLayer.Services
         {
             return repository.AddRemander(notesId, dateTime);
         }
+        public string UploadImage(string fpath, int notesId, int userId)
+        {
+            return repository.UploadImage(fpath, notesId, userId);
+        }
     }
 
 }
