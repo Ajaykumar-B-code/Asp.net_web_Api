@@ -89,6 +89,19 @@ namespace RepositoryLayer.Services
             return notesEntiy;
         }
 
+        public NotesEntity Delete(int userId, int NotesId)
+        {
+            var notesEntity = context.NotesTable.FirstOrDefault(x => ((x.Id == userId) && (x.NotesId == NotesId)));
+            if (notesEntity != null)
+            {
+                context.NotesTable.Remove(notesEntity);
+                context.SaveChanges();
+            }
+            return notesEntity;
+            throw new Exception("notes did not found");
+        }
+
+
 
 
     }
