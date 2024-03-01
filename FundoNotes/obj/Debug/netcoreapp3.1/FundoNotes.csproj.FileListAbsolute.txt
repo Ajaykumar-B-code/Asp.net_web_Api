@@ -75,3 +75,6 @@ C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcorea
 C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
 C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\CloudinaryDotNet.dll
+C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\NLog.dll
+C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+C:\Users\91767\Desktop\workspace\webApi\FundoNotes\FundoNotes\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll

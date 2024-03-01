@@ -5,10 +5,12 @@ using ManagerLayer.Interface;
 using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using RepositoryLayer.Context;
 using RepositoryLayer.Entity;
 using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 
@@ -21,12 +23,14 @@ namespace FundoNotes.Controllers
         private readonly IUserManager userManager;
         private readonly IBus _bus;
         private readonly demoContext context;
+       private readonly ILogger<UserController> logger;
 
-        public UserController(IUserManager userManager,IBus _bus,demoContext context)
+        public UserController(IUserManager userManager,IBus _bus,demoContext context, ILogger<UserController> logger)
         { 
             this.userManager = userManager;
             this._bus = _bus;
-            this.context = context; 
+            this.context = context;
+            this.logger = logger;
 
         }
 
@@ -39,6 +43,7 @@ namespace FundoNotes.Controllers
                 var response = userManager.UserRegistration(model);
                 if (response != null)
                 {
+                    logger.LogInformation("Register success");
                     return Ok(new ResModel<user> { Success = true, Message = "register successfull", Data = response });
                 }
                 else
@@ -63,6 +68,7 @@ namespace FundoNotes.Controllers
                 string response = userManager.Userlogin(model);
                 if (response != null)
                 {
+                    logger.LogInformation("login success");
                     return Ok(new ResModel<String> { Success = true, Message = "login sucessfull", Data = response });
                 }
                 else

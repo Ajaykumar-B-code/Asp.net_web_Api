@@ -1,5 +1,4 @@
-﻿
-using CommonLayer.RequestModels;
+﻿using CommonLayer.RequestModels;
 using CommonLayer.ResponseModel;
 using ManagerLayer.Interface;
 using ManagerLayer.Services;
