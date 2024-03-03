@@ -35,6 +35,11 @@ namespace RepositoryLayer.Services
             
         }
 
-       
+        public List<LabelEntity> GetAllLabel(int userId, string labelname)
+        {
+            return context.LabelTable.Where(x => (x.Id == userId) && (x.LabelName == labelname)).ToList();
+        }
+
+
     }
 }
