@@ -55,7 +55,7 @@ namespace RepositoryLayer.Services
 
             if (user != null)
             {
-                //   string decryptedPassword = this._dataProtector.Unprotect(user.Password);
+                //  string decryptedPassword = this._dataProtector.Unprotect(user.Password);
                 if (bcrypt.MatchPass(model.Password, user.Password))
                 {
                     string token = GenerateToken(user.Email, user.Id);

@@ -23,7 +23,7 @@ namespace FundoNotes.Controllers
         private readonly IUserManager userManager;
         private readonly IBus _bus;
         private readonly demoContext context;
-       private readonly ILogger<UserController> logger;
+        private readonly ILogger<UserController> logger;
 
         public UserController(IUserManager userManager,IBus _bus,demoContext context, ILogger<UserController> logger)
         { 

@@ -23,7 +23,7 @@ namespace FundoNotes.Controllers
         }
         [Authorize]
         [HttpPost]
-        [Route("add")]
+        [Route("addNote")]
 
         public ActionResult Creation(NotesCreatioinModel model)
         {
@@ -38,7 +38,7 @@ namespace FundoNotes.Controllers
 
         [Authorize]
         [HttpGet]
-        [Route("all")]
+        [Route("allNotes")]
         public ActionResult All()
         {
             int id = Convert.ToInt32(User.FindFirst("UserId").Value);
@@ -52,7 +52,7 @@ namespace FundoNotes.Controllers
 
         [Authorize]
         [HttpPut]
-        [Route("update")]
+        [Route("updateNote")]
         public ActionResult update(NotesCreatioinModel model,int notesId)
         {
             try

@@ -13,6 +13,8 @@ namespace RepositoryLayer.Context
         public DbSet<DemoEntity> DemoTable { get; set; }
         public DbSet<user> UserTable { get; set; }
         public DbSet<NotesEntity> NotesTable { get; set; }
+
+        public DbSet<LabelEntity> LabelTable { get; set; }
     }
 }
  

@@ -44,6 +44,8 @@ namespace FundoNotes
             services.AddTransient<IUserManager, UserManager>();
             services.AddTransient<INotesRepository, NotesRepository>();
             services.AddTransient<INotesManager, NotesManager>();
+            services.AddTransient<ILabelRepository, LabelRepository>();
+            services.AddTransient<ILabelManager, LabelManager>();
 
             services.AddAuthentication(x =>
             {

@@ -44,7 +44,6 @@ namespace RepositoryLayer.Services
             return context.NotesTable.Where(x => x.Id == id).ToList();
         }
 
-       
         public NotesEntity UpdateNotes(int userId, NotesCreatioinModel model, int NotesId)
         {
 
@@ -169,8 +168,7 @@ namespace RepositoryLayer.Services
 
         public string UploadImage(string fpath,int notesId,int userId)
         {
-            try
-            {
+           
                 var notesEntityUserId = context.NotesTable.Where(x => x.Id==userId);
                 if(notesEntityUserId != null)
                 {
@@ -196,12 +194,21 @@ namespace RepositoryLayer.Services
                 }
                 return null;
             }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-    }
+         }
+     }
 
 
-}
+
+        //public AddLabelbyNotes(int userID,int noteId,string label)
+        //{
+        //    var notes= context.NotesTable.FirstOrDefault(x=>(x.Id==userID)&&(x.NotesId==noteId));
+        //    var label = new LabelEntity();
+        //    if( notes != null )
+        //    {
+
+        //    }
+        //}
+    
+
+
+

@@ -35,7 +35,6 @@ namespace RepositoryLayer.Entity
         public DateTime UpdatedAt { get; set; }
 
         [ForeignKey("NotesUser")]
-
         public int Id {  get; set; }
 
         [JsonIgnore]
