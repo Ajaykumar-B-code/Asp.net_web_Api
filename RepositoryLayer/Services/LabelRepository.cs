@@ -57,13 +57,21 @@ namespace RepositoryLayer.Services
             }
             throw new Exception("Label did not found with that name");
         }
-
+        public LabelEntity Remove(int userId, int NotesId, string labelName)
+        {
+            LabelEntity labelEntity = context.LabelTable.FirstOrDefault(x => ((x.Id == userId) && (x.NotesId == NotesId) && (x.LabelName == labelName)));
+            if (labelEntity != null)
+            {
+                context.LabelTable.Remove(labelEntity);
+                context.SaveChanges();
+                return labelEntity;
+            }
+            throw new Exception("label did not found with notesid and labelname");
+        }
         public List<LabelEntity> GetAllSameLabel(string labelName)
         {
             return context.LabelTable.Where(x => x.LabelName == labelName).ToList();
         }
-
-       
 
     }
 }
