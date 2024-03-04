@@ -41,5 +41,29 @@ namespace RepositoryLayer.Services
         }
 
 
+        public List<LabelEntity> UpdateLabel(int UserId, string oldlabelName, string newLabelName)
+        {
+
+            List<LabelEntity> labelEntities = GetAllSameLabel(oldlabelName);
+
+            if (labelEntities.Count() > 0)
+            {
+                foreach (LabelEntity onelabel in labelEntities)
+                {
+                    onelabel.LabelName = newLabelName;
+                    context.SaveChanges();
+                }
+                return labelEntities;
+            }
+            throw new Exception("Label did not found with that name");
+        }
+
+        public List<LabelEntity> GetAllSameLabel(string labelName)
+        {
+            return context.LabelTable.Where(x => x.LabelName == labelName).ToList();
+        }
+
+       
+
     }
 }

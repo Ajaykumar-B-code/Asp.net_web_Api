@@ -26,5 +26,7 @@ namespace RepositoryLayer.Entity
 
         [JsonIgnore]
         public virtual NotesEntity noteusers { get; set; }
+        
+
     }
 }
