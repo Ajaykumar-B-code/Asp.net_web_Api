@@ -58,7 +58,17 @@ namespace RepositoryLayer.Services
             throw new Exception("no collobration found for this note");
         }
 
-
+        public collaborativeEntity Remove(int userId, int noteId, string collabemail)
+        {
+            collaborativeEntity collab = context.CollaborativeEntities.FirstOrDefault(x => ((x.Id == userId) && (x.NotesId == noteId) && (x.CollaborativeEmail == collabemail) && (x.IsTrash == false)));
+            if (collab != null)
+            {
+                collab.IsTrash = true;
+                context.SaveChanges();
+                return collab;
+            }
+            throw new Exception("collabration did not found");
+        }
 
 
     }
