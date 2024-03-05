@@ -41,6 +41,23 @@ namespace RepositoryLayer.Services
             throw new Exception("mail does not exist");
         }
 
+        public List<string> DisplayCollobratedUser(int UserId, int NoteId)
+        {
+            List<string> emailList = new List<string>();
+            List<collaborativeEntity> collaborativeEntities = new List<collaborativeEntity>();
+            collaborativeEntities = context.CollaborativeEntities.Where(x => (x.Id == UserId) && (x.NotesId == NoteId)).ToList();
+            foreach (collaborativeEntity collaborativeEntity in collaborativeEntities)
+            {
+                emailList.Add(collaborativeEntity.CollaborativeEmail);
+            }
+
+            if (emailList.Count > 0)
+            {
+                return emailList;
+            }
+            throw new Exception("no collobration found for this note");
+        }
+
 
     }
 }
