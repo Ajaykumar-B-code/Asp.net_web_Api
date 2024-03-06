@@ -61,6 +61,16 @@ namespace ManagerLayer.Services
         {
             return repository.UploadImage(fpath, notesId, userId);
         }
+
+        // review
+        public NotesEntity FindNote(int userId, string title, string description)
+        {
+            return repository.FindNote(userId,title,description);
+        }
+        public int CountofUser(int userId)
+        {
+            return repository.CountofUser(userId);
+        }
     }
 
 }

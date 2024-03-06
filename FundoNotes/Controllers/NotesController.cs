@@ -211,5 +211,38 @@ namespace FundoNotes.Controllers
             
            
         }
+
+        // review
+        [Authorize]
+        [HttpGet]
+        [Route("findNotes")]
+        public ActionResult FindNotesbytitle(string title,string description)
+        {
+            try
+            {
+                int userId = Convert.ToInt32(User.FindFirst("UserId").Value);
+                var response = manager.FindNote(userId, title, description);
+                if (response != null)
+                {
+                    return Ok(new ResModel<NotesEntity> { Success = true, Message = "Notes Displayed Sucessfully", Data = response });
+                }
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = "Notes Display failed", Data = response });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResModel<NotesEntity> { Success = false, Message = ex.Message, Data = null });
+            }
+        }
+        [HttpGet]
+        [Route("CountofNotes")]
+        public ActionResult CountofNotes(int userId)
+        {
+            int count = manager.CountofUser(userId);
+            if (count != 0)
+            {
+                return Ok(new ResModel<int> { Success = true, Message = "Display count of notes Successfull ", Data = count });
+            }
+            return BadRequest(new ResModel<int> { Success = false, Message = " No note found ",Data = 0 });
+        }
     }
 }

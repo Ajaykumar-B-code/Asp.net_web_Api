@@ -49,6 +49,8 @@ namespace FundoNotes
             services.AddTransient<IColloborativeRepository, ColloborativeRepository>();
             services.AddTransient<IColloborativeManager, ColloborativeManager>();
 
+            services.AddStackExchangeRedisCache(options => { options.Configuration = Configuration["RedisCacheUrl"]; });
+
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -72,7 +74,7 @@ namespace FundoNotes
             services.AddDataProtection();   
             services.AddSwaggerGen(option =>
             {
-                option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
+                option.SwaggerDoc("v1", new OpenApiInfo { Title = "FundoNote API", Version = "v1" });
                 option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,
@@ -130,9 +132,9 @@ namespace FundoNotes
             // This middleware serves the Swagger documentation UI
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Employee API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Fundo notes");
             });
-
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();

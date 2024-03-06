@@ -115,6 +115,33 @@ namespace RepositoryLayer.Services
             }
         }
 
+        // review
+        public user UserRegister(RegisterModel model)
+        {
+            user Userentity = context.UserTable.FirstOrDefault(x => x.Email == model.Email);
+            user NewUserentiy = new user();
+            if(Userentity != null)
+            {
+                Userentity.Fname= model.Fname;
+                Userentity.Lname= model.Lname;
+                string encryptedPassword = bcrypt.HashGenerator(model.Password);
+                Userentity.Password = encryptedPassword;
+                context.SaveChanges();
+                return Userentity; 
+            }
+            else
+            {
+                NewUserentiy.Fname= model.Fname;
+                NewUserentiy.Lname = model.Lname;
+                NewUserentiy.Email= model.Email;
+                string encryptedPassword = bcrypt.HashGenerator(model.Password);
+                NewUserentiy.Password = encryptedPassword;
+                context.UserTable.Add(NewUserentiy);
+                context.SaveChanges();
+                return NewUserentiy;
+            }
+            
+        }
         
     }
 

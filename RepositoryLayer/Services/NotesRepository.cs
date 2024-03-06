@@ -7,6 +7,7 @@ using RepositoryLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
@@ -193,7 +194,24 @@ namespace RepositoryLayer.Services
                     return null;
                 }
                 return null;
+         }
+
+        // review
+        public NotesEntity FindNote(int userId,string title,string description)
+        {
+            NotesEntity notesEntity = context.NotesTable.FirstOrDefault(x=>((x.Id==userId)&&(x.Title==title)&&(x.Description==description)));
+
+            if( notesEntity != null)
+            {
+                return notesEntity;
             }
+            throw new Exception("notes did not found");
+        }
+
+        public int CountofUser(int userId)
+        {
+            return context.NotesTable.Count(x => x.Id == userId);
+        }
          }
      }
 

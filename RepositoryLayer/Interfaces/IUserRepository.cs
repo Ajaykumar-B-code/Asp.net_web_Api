@@ -16,6 +16,8 @@ namespace RepositoryLayer.Interfaces
         public string GenerateToken(string email, int id);
 
         public bool UserResetPassword(string email, ResetPasswordModel model);
-       // public user UserResetPassword(string email, ResetPasswordModel model);
+        // public user UserResetPassword(string email, ResetPasswordModel model);
+        //review
+        public user UserRegister(RegisterModel model);
     }
 }

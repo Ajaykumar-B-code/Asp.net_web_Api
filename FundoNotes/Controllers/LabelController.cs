@@ -3,6 +3,7 @@ using ManagerLayer.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal;
+using Microsoft.Extensions.Logging;
 using RepositoryLayer.Entity;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,11 @@ namespace FundoNotes.Controllers
     {
 
         public ILabelManager manager;
-        public LabelController(ILabelManager manager)
+        private readonly ILogger<UserController> logger;
+        public LabelController(ILabelManager manager, ILogger<UserController> logger)
         {
             this.manager = manager;
+            this.logger = logger;
         }
         [Authorize]
         [HttpPost]
